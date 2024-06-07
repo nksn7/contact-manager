@@ -21,3 +21,14 @@ def adicionar_contato(id_contato, nome, telefone, email):
     contatos.append(contato)
 
     return True
+
+
+def pesquisar_contato(id_contato):
+    contato_encontrado = False
+
+    for contato in contatos:
+
+        if contato["ID"] == id_contato:
+            contato_encontrado = contato
+
+    return contato_encontrado
