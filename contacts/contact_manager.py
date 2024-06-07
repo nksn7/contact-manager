@@ -32,3 +32,15 @@ def pesquisar_contato(id_contato):
             contato_encontrado = contato
 
     return contato_encontrado
+
+
+def exclui_contato(id_contato):
+    contato_excluir = pesquisar_contato(id_contato)
+
+    for contato in contatos:
+
+        if contato == contato_excluir:
+            contatos.remove(contato_excluir)
+            break
+
+    return contato_excluir
