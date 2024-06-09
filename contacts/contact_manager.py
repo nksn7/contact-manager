@@ -1,46 +1,49 @@
-contatos = []
+import uuid
+contacts = []
 
 
-def listar_contatos(lista):
-    string_listagem = "Lista de Contatos\n\n"
+def list_contacts(contacts_list):
+    string_list = "Lista de Contatos\n\n"
 
-    for contato in lista:
-        string_listagem += f"{contato}\n"
+    for contact in contacts_list:
+        string_list += f"- {contact}\n"
 
-    return string_listagem
+    return string_list
 
 
-def adicionar_contato(id_contato, nome, telefone, email):
-    contato = {"ID": id_contato, "Nome": nome, "Telefone": telefone, "Email": email}
+def add_contact(name, phone, email):
+    id_contact = uuid.uuid4()
 
-    for elemento in contatos:
+    contact = {"ID": id_contact, "Nome": name, "Telefone": phone, "Email": email}
 
-        if elemento == contato:
+    for element in contacts:
+
+        if element == contact:
             return False
 
-    contatos.append(contato)
+    contacts.append(contact)
 
     return True
 
 
-def pesquisar_contato(id_contato):
-    contato_encontrado = False
+def found_contact(id_contact):
+    contact_found = False
 
-    for contato in contatos:
+    for contact in contacts:
 
-        if contato["ID"] == id_contato:
-            contato_encontrado = contato
+        if contact["ID"] == id_contact:
+            contact_found = contact
 
-    return contato_encontrado
+    return contact_found
 
 
-def exclui_contato(id_contato):
-    contato_excluir = pesquisar_contato(id_contato)
+def remove_contact(id_contact):
+    contact_remove = found_contact(id_contact)
 
-    for contato in contatos:
+    for contact in contacts:
 
-        if contato == contato_excluir:
-            contatos.remove(contato_excluir)
+        if contact == contact_remove:
+            contacts.remove(contact_remove)
             break
 
-    return contato_excluir
+    return contact_remove
